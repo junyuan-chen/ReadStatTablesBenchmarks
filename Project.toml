@@ -4,7 +4,10 @@ authors = ["Junyuan Chen <norman.chen.git@gmail.com>"]
 [deps]
 BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
 CondaPkg = "992eb4ea-22a4-4c89-a5bb-47a3300528ab"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 PythonCall = "6099a3de-0909-46bc-b1f4-468b9a2dfc0d"
 RCall = "6f49c342-dc21-5d91-9882-a32aef131414"
 ReadStat = "d71aba96-b539-5138-91ee-935c3ee1374c"

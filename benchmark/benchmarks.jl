@@ -8,29 +8,29 @@ using RCall
 using ReadStat
 using ReadStatTables
 
-pyreadstat = pyimport("pyreadstat")
-pd = pyimport("pandas")
-@rimport haven
+const pyreadstat = pyimport("pyreadstat")
+const pd = pyimport("pandas")
+const haven = rimport("haven")
 
 csv_single(p) = CSV.File(p, ntasks=1)
 
-fnames = ["1k_100", "10k_100", "10k_1k"]
-nsamples = [100, 100, 25]
-single_pkgcmds = [
+const fnames = ["1k_100", "10k_100", "10k_1k"]
+const nsamples = [500, 200, 50]
+const single_pkgcmds = [
     "ReadStatTables.jl" => readstat,
     "ReadStat.jl" => read_dta,
     "pyreadstat" => pyreadstat.read_dta,
     "haven" => haven.read_dta,
-    "Pandas" => pd.read_stata,
+    "pandas" => pd.read_stata,
     "CSV.jl" => csv_single
 ]
 
-suite = BenchmarkGroup()
+const suite = BenchmarkGroup()
 suite["single_threaded"] = BenchmarkGroup()
 
-for (pkg, cmd) in single_pkgcmds
-    suite["single_threaded"][pkg] = BenchmarkGroup()
-    for (n, nsam) in zip(fnames, nsamples)
+for (n, nsam) in zip(fnames, nsamples)
+    suite["single_threaded"][n] = BenchmarkGroup()
+    for (pkg, cmd) in single_pkgcmds
         if pkg == "CSV.jl"
             # Unzip the gz files
             f = CSV.File("data/"*n*".csv.gz")
@@ -39,7 +39,7 @@ for (pkg, cmd) in single_pkgcmds
         else
             path = "data/"*n*".dta"
         end
-        suite["single_threaded"][pkg][n] = @benchmarkable $cmd($path) samples=nsam
+        suite["single_threaded"][n][pkg] = @benchmarkable $cmd($path) samples=nsam
     end
 end
 
