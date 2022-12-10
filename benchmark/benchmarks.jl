@@ -14,8 +14,8 @@ const haven = rimport("haven")
 
 csv_single(p) = CSV.File(p, ntasks=1)
 
-const fnames = ["1k_100", "10k_100", "10k_1k"]
-const nsamples = [500, 200, 50]
+const fnames = ["1k_50", "10k_50", "10k_500"]
+const nsamples = [500, 200, 100]
 const single_pkgcmds = [
     "ReadStatTables.jl" => readstat,
     "ReadStat.jl" => read_dta,

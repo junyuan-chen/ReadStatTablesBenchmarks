@@ -21,20 +21,21 @@ function collect_results!(df, r)
 end
 
 const pkg_order = Dict(["ReadStatTables.jl", "ReadStat.jl", "pyreadstat", "haven", "pandas", "CSV.jl"].=>1:6)
-const file_order = Dict(["1k_100", "10k_100", "10k_1k"].=>1:3)
+const file_order = Dict(["1k_50", "10k_50", "10k_500"].=>1:3)
 
-function plot_singles(df, title, subtitle, fname, reltime::Bool=true, width=6, length=3.5)
+function plot_singles(df, title, subtitle, fname, reltime::Bool=true, width=7, length=3.5)
     # Data need to be sorted first
     time = reltime ? df.time ./ df.time[1] : df.time
     res = 72 .* (width, length)
     fig = Figure(; resolution=res)
     pkgs = ["ReadStatTables.jl", "ReadStat.jl", "pyreadstat", "haven", "pandas", "CSV.jl"]
     ax = Axis(fig[1,1], yticks = (6:-1:1, pkgs),
-        title = title, subtitle=subtitle, xlabel = "Relative Time", ylabel = "Package")
+        title = title, subtitle=subtitle, xlabel = "Relative Time")
     bar_lbls = [@sprintf("%.2f", x) for x in time]
     bar_lbls[end] *= " (CSV File)"
-    barplot!(ax, 6:-1:1, time, bar_labels=bar_lbls, direction=:x, label_size=11)
+    barplot!(ax, 6:-1:1, time, bar_labels=bar_lbls, direction=:x, label_size=11, width=0.65)
     xlims!(nothing, 1.1*maximum(time))
+    hidexdecorations!(ax, label=false)
     save("results/$(fname).svg", fig, pt_per_unit=1)
     return fig
 end
@@ -46,15 +47,15 @@ function main()
     singles = DataFrame(singles)
     sort!(singles, [:pkg, :file], by=[x->pkg_order[x], x->file_order[x]])
     readstatatitle = "Reading Stata .dta File"
-    plot_singles(singles[singles.file.=="1k_100",:],
-        readstatatitle, "Table of Size 1,000 × 100, Single-Threaded",
-        "stata_1k_100_latest")
-    plot_singles(singles[singles.file.=="10k_100",:],
-        readstatatitle, "Table of Size 10,000 × 100, Single-Threaded",
-        "stata_10k_100_latest")
-    plot_singles(singles[singles.file.=="10k_1k",:],
-        readstatatitle, "Table of Size 10,000 × 1,000, Single-Threaded",
-        "stata_10k_1k_latest")
+    plot_singles(singles[singles.file.=="1k_50",:],
+        readstatatitle, "Table of Size 1,000 × 50, Single-Threaded",
+        "stata_1k_50_latest")
+    plot_singles(singles[singles.file.=="10k_50",:],
+        readstatatitle, "Table of Size 10,000 × 50, Single-Threaded",
+        "stata_10k_50_latest")
+    plot_singles(singles[singles.file.=="10k_500",:],
+        readstatatitle, "Table of Size 10,000 × 500, Single-Threaded",
+        "stata_10k_500_latest")
 end
 
 main()

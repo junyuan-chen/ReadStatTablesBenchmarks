@@ -3,7 +3,7 @@
 using CSV
 
 function main()
-    fnames = ["1k_100", "10k_100", "10k_1k"]
+    fnames = ["1k_50", "10k_50", "10k_500"]
     for n in fnames
         f = CSV.File("data/stata_"*n*".csv")
         CSV.write("data/"*n*".csv.gz", f, compress=true)
