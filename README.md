@@ -23,7 +23,7 @@ Parameters (keyword arguments) for reading the files are default values.
 - [pyreadstat](https://github.com/Roche/pyreadstat) v1.2.0
 - [haven](https://github.com/tidyverse/haven) v2.5.1
 - [pandas](https://github.com/pandas-dev/pandas) v1.5.2
-- [CSV.jl](https://github.com/JuliaData/CSV.jl) v0.10.7
+- [CSV.jl](https://github.com/JuliaData/CSV.jl) v0.10.8
 
 Python and R packages are installed with
 [CondaPkg.jl](https://github.com/cjdoris/CondaPkg.jl).
@@ -51,8 +51,8 @@ Platform Info:
 ### Results
 
 <p align="center">
-  <img src="results/v0.2.0/stata_1k_100.svg" height="300"><br><br>
-  <img src="results/v0.2.0/stata_10k_100.svg" height="300"><br><br>
-  <img src="results/v0.2.0/stata_10k_1k.svg" height="300"><br><br>
+  <img src="results/v0.2.0/stata_1k_50.svg" height="300"><br><br>
+  <img src="results/v0.2.0/stata_10k_50.svg" height="300"><br><br>
+  <img src="results/v0.2.0/stata_10k_500.svg" height="300"><br><br>
 </p>
 
