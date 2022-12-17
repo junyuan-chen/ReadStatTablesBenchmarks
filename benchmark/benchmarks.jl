@@ -8,29 +8,50 @@ using RCall
 using ReadStat
 using ReadStatTables
 
-const pyreadstat = pyimport("pyreadstat")
+const pyrs = pyimport("pyreadstat")
 const pd = pyimport("pandas")
 const haven = rimport("haven")
 
-csv_single(p) = CSV.File(p, ntasks=1)
+csv1(p) = CSV.File(p, ntasks=1)
+readstat1(p) = readstat(p, ntasks=1)
+
+readstat4(p) = readstat(p, ntasks=4)
+pyrs4(p) = pyrs.read_file_multiprocessing(pyrs.read_dta, p, num_processes=4)
+csv4(p) = CSV.File(p, ntasks=4)
+
+readstat8(p) = readstat(p, ntasks=8)
+pyrs8(p) = pyrs.read_file_multiprocessing(pyrs.read_dta, p, num_processes=8)
+csv8(p) = CSV.File(p, ntasks=8)
 
 const fnames = ["1k_50", "10k_50", "10k_500"]
 const nsamples = [500, 200, 100]
-const single_pkgcmds = [
-    "ReadStatTables.jl" => readstat,
+const pkgcmds1 = [
+    "ReadStatTables.jl" => readstat1,
     "ReadStat.jl" => read_dta,
-    "pyreadstat" => pyreadstat.read_dta,
+    "pyreadstat" => pyrs.read_dta,
     "haven" => haven.read_dta,
     "pandas" => pd.read_stata,
-    "CSV.jl" => csv_single
+    "CSV.jl" => csv1
+]
+const pkgcmds4 = [
+    "ReadStatTables.jl" => readstat4,
+    # pyreadstat is ommitted as the multiprocess version is very slow on small files
+    "CSV.jl" => csv4
+]
+const pkgcmds8 = [
+    "ReadStatTables.jl" => readstat8,
+    "pyreadstat" => pyrs8,
+    "CSV.jl" => csv8
 ]
 
 const suite = BenchmarkGroup()
-suite["single_threaded"] = BenchmarkGroup()
+suite["1k_50"] = BenchmarkGroup()
+suite["10k_50"] = BenchmarkGroup()
+suite["10k_500"] = BenchmarkGroup()
 
 for (n, nsam) in zip(fnames, nsamples)
-    suite["single_threaded"][n] = BenchmarkGroup()
-    for (pkg, cmd) in single_pkgcmds
+    suite[n]["thread1"] = BenchmarkGroup()
+    for (pkg, cmd) in pkgcmds1
         if pkg == "CSV.jl"
             # Unzip the gz files
             f = CSV.File("data/"*n*".csv.gz")
@@ -39,7 +60,20 @@ for (n, nsam) in zip(fnames, nsamples)
         else
             path = "data/"*n*".dta"
         end
-        suite["single_threaded"][n][pkg] = @benchmarkable $cmd($path) samples=nsam
+        suite[n]["thread1"][pkg] = @benchmarkable $cmd($path) samples=nsam
+    end
+    if n == "10k_500"
+        suite[n]["thread8"] = BenchmarkGroup()
+        for (pkg, cmd) in pkgcmds8
+            path = pkg == "CSV.jl" ? "data/"*n*".csv" : "data/"*n*".dta"
+            suite[n]["thread8"][pkg] = @benchmarkable $cmd($path) samples=nsam
+        end
+    else
+        suite[n]["thread4"] = BenchmarkGroup()
+        for (pkg, cmd) in pkgcmds4
+            path = pkg == "CSV.jl" ? "data/"*n*".csv" : "data/"*n*".dta"
+            suite[n]["thread4"][pkg] = @benchmarkable $cmd($path) samples=nsam
+        end
     end
 end
 
