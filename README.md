@@ -18,7 +18,7 @@ Parameters (keyword arguments) for reading the files are default values.
 
 ### Packages
 
-- [ReadStatTables.jl](https://github.com/junyuan-chen/ReadStatTables.jl) v0.2.1
+- [ReadStatTables.jl](https://github.com/junyuan-chen/ReadStatTables.jl) v0.2.2
 - [ReadStat.jl](https://github.com/queryverse/ReadStat.jl) v1.1.1
 - [pyreadstat](https://github.com/Roche/pyreadstat) v1.2.0
 - [haven](https://github.com/tidyverse/haven) v2.5.1
@@ -51,8 +51,8 @@ Platform Info:
 ### Results
 
 <p align="center">
-  <img src="results/v0.2.1/stata_1k_50.svg" height="300"><br><br>
-  <img src="results/v0.2.1/stata_10k_50.svg" height="300"><br><br>
-  <img src="results/v0.2.1/stata_10k_500.svg" height="300"><br><br>
+  <img src="results/v0.2.2/stata_1k_50.svg" height="300"><br><br>
+  <img src="results/v0.2.2/stata_10k_50.svg" height="300"><br><br>
+  <img src="results/v0.2.2/stata_10k_500.svg" height="300"><br><br>
 </p>
 
