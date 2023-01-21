@@ -18,12 +18,12 @@ Parameters (keyword arguments) for reading the files are default values.
 
 ### Packages
 
-- [ReadStatTables.jl](https://github.com/junyuan-chen/ReadStatTables.jl) v0.2.2
+- [ReadStatTables.jl](https://github.com/junyuan-chen/ReadStatTables.jl) v0.2.3
 - [ReadStat.jl](https://github.com/queryverse/ReadStat.jl) v1.1.1
 - [pyreadstat](https://github.com/Roche/pyreadstat) v1.2.0
 - [haven](https://github.com/tidyverse/haven) v2.5.1
 - [pandas](https://github.com/pandas-dev/pandas) v1.5.2
-- [CSV.jl](https://github.com/JuliaData/CSV.jl) v0.10.8
+- [CSV.jl](https://github.com/JuliaData/CSV.jl) v0.10.9
 
 Python and R packages are installed with
 [CondaPkg.jl](https://github.com/cjdoris/CondaPkg.jl).
@@ -34,13 +34,13 @@ Benchmark results are produced with
 
 ### Environment
 
-- Julia v1.8.3
+- Julia v1.8.5
 - Python v3.11.0
 - R v4.2.2
 
 ```
 Platform Info:
-  OS: macOS (arm64-apple-darwin21.3.0)
+  OS: macOS (arm64-apple-darwin21.5.0)
   CPU: 10 × Apple M1 Pro
   WORD_SIZE: 64
   LIBM: libopenlibm
@@ -51,8 +51,8 @@ Platform Info:
 ### Results
 
 <p align="center">
-  <img src="results/v0.2.2/stata_1k_50.svg" height="300"><br><br>
-  <img src="results/v0.2.2/stata_10k_50.svg" height="300"><br><br>
-  <img src="results/v0.2.2/stata_10k_500.svg" height="300"><br><br>
+  <img src="results/v0.2.3/stata_1k_50.svg" height="252"><br><br>
+  <img src="results/v0.2.3/stata_10k_50.svg" height="252"><br><br>
+  <img src="results/v0.2.3/stata_10k_500.svg" height="252"><br><br>
 </p>
 
