@@ -18,11 +18,11 @@ Parameters (keyword arguments) for reading the files are default values.
 
 ### Packages
 
-- [ReadStatTables.jl](https://github.com/junyuan-chen/ReadStatTables.jl) v0.2.3
+- [ReadStatTables.jl](https://github.com/junyuan-chen/ReadStatTables.jl) v0.2.4
 - [ReadStat.jl](https://github.com/queryverse/ReadStat.jl) v1.1.1
 - [pyreadstat](https://github.com/Roche/pyreadstat) v1.2.0
 - [haven](https://github.com/tidyverse/haven) v2.5.1
-- [pandas](https://github.com/pandas-dev/pandas) v1.5.2
+- [pandas](https://github.com/pandas-dev/pandas) v1.5.3
 - [CSV.jl](https://github.com/JuliaData/CSV.jl) v0.10.9
 
 Python and R packages are installed with
@@ -51,8 +51,8 @@ Platform Info:
 ### Results
 
 <p align="center">
-  <img src="results/v0.2.3/stata_1k_50.svg" height="252"><br><br>
-  <img src="results/v0.2.3/stata_10k_50.svg" height="252"><br><br>
-  <img src="results/v0.2.3/stata_10k_500.svg" height="252"><br><br>
+  <img src="results/v0.2.4/stata_1k_50.svg" height="252"><br><br>
+  <img src="results/v0.2.4/stata_10k_50.svg" height="252"><br><br>
+  <img src="results/v0.2.4/stata_10k_500.svg" height="252"><br><br>
 </p>
 
