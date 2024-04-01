@@ -34,7 +34,7 @@ function plot_results(df, title, fname, reltime::Bool=true, width=7.5, length=3.
     # Data need to be sorted first
     time = reltime ? df.time ./ df.time[2] : df.time
     res = 72 .* (width, length)
-    fig = Figure(; resolution=res, backgroundcolor=:transparent)
+    fig = Figure(; size=res, backgroundcolor=:transparent)
     pkgs = ["ReadStatTables.jl", "ReadStat.jl", "pyreadstat", "haven", "pandas", "CSV.jl (CSV File)"]
     ax = Axis(fig[1,1], yticks = (6:-1:1, pkgs), title = title, xlabel = "Relative Time",
         backgroundcolor=:transparent)
@@ -48,7 +48,7 @@ function plot_results(df, title, fname, reltime::Bool=true, width=7.5, length=3.
     elements = [PolyElement(polycolor=colors[i]) for i in 2:3]
     Legend(fig[2,1], elements, [string(df.nthd[2][end]), "1"],
         "Number of Threads", tellheight=true, tellwidth=false,
-        titleposition=:left, titlegap=10, nbanks=2, bgcolor=:transparent)
+        titleposition=:left, titlegap=10, nbanks=2, backgroundcolor=:transparent)
     rowgap!(fig.layout, Relative(0.05))
     save("results/$(fname).svg", fig, pt_per_unit=1)
     return fig
