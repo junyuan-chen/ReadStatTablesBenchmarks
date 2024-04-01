@@ -18,12 +18,12 @@ Parameters (keyword arguments) for reading the files are default values.
 
 ### Packages
 
-- [ReadStatTables.jl](https://github.com/junyuan-chen/ReadStatTables.jl) v0.2.4
+- [ReadStatTables.jl](https://github.com/junyuan-chen/ReadStatTables.jl) v0.3.0
 - [ReadStat.jl](https://github.com/queryverse/ReadStat.jl) v1.1.1
-- [pyreadstat](https://github.com/Roche/pyreadstat) v1.2.0
-- [haven](https://github.com/tidyverse/haven) v2.5.1
-- [pandas](https://github.com/pandas-dev/pandas) v1.5.3
-- [CSV.jl](https://github.com/JuliaData/CSV.jl) v0.10.9
+- [pyreadstat](https://github.com/Roche/pyreadstat) v1.2.7
+- [haven](https://github.com/tidyverse/haven) v2.5.4
+- [pandas](https://github.com/pandas-dev/pandas) v2.2.1
+- [CSV.jl](https://github.com/JuliaData/CSV.jl) v0.10.13
 
 Python and R packages are installed with
 [CondaPkg.jl](https://github.com/cjdoris/CondaPkg.jl).
@@ -34,25 +34,25 @@ Benchmark results are produced with
 
 ### Environment
 
-- Julia v1.8.5
-- Python v3.11.0
-- R v4.2.2
+- Julia v1.10.2
+- Python v3.12.2
+- R v4.3.3
 
 ```
 Platform Info:
-  OS: macOS (arm64-apple-darwin21.5.0)
+  OS: macOS (arm64-apple-darwin22.4.0)
   CPU: 10 × Apple M1 Pro
   WORD_SIZE: 64
   LIBM: libopenlibm
-  LLVM: libLLVM-13.0.1 (ORCJIT, apple-m1)
-  Threads: 8 on 8 virtual cores
+  LLVM: libLLVM-15.0.7 (ORCJIT, apple-m1)
+Threads: 8 default, 0 interactive, 4 GC (on 8 virtual cores)
 ```
 
 ### Results
 
 <p align="center">
-  <img src="results/v0.2.4/stata_1k_50.svg" height="252"><br><br>
-  <img src="results/v0.2.4/stata_10k_50.svg" height="252"><br><br>
-  <img src="results/v0.2.4/stata_10k_500.svg" height="252"><br><br>
+  <img src="results/v0.3.0/stata_1k_50.svg" height="252"><br><br>
+  <img src="results/v0.3.0/stata_10k_50.svg" height="252"><br><br>
+  <img src="results/v0.3.0/stata_10k_500.svg" height="252"><br><br>
 </p>
 
